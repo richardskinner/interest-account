@@ -1,0 +1,62 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: StatsAPI
+servers:
+  - url: https://stats.dev.chip.test/
+paths:
+  /users/{userId}:
+    get:
+      summary: User statistics
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The UUID of the user
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Statistics"
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Statistics:
+      type: object
+      required:
+      - id
+      - income
+      properties:
+        id:
+          type: string
+          description: User ID
+          example: 88224979-406e-4e32-9458-55836e4e1f95
+        income:
+          type: integer
+          description: Montly income
+          nullable: true
+          example: 499999
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          description: Error code
+          example: 100
+        message:
+          type: string
+          description: Error message
+          example: Unexpected error
+

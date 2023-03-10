@@ -1,0 +1,30 @@
+{
+  "name": "richardskinner/interest-account",
+  "description": "Interest library for educational purposes",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Richard Skinner",
+      "email": "richard.skinner@gunpowderdigital.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Account\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Account\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "8.1.*",
+    "ext-intl": "*",
+    "phpunit/phpunit": "^10.0",
+    "ramsey/uuid": "^4.7",
+    "moneyphp/money": "^4.1",
+    "nesbot/carbon": "^2.66"
+  }
+}
